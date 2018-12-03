@@ -44,3 +44,6 @@ bower_components
 
 # .nvim specific
 plugged
+
+# Binary files
+*.out
