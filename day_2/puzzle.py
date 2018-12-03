@@ -1,5 +1,5 @@
 """
-AOC 2018, Day 1
+AOC 2018, Day 2
 """
 
 __author__ = "adibis"
@@ -29,16 +29,15 @@ def get_code(code_1, code_2):
     for a, b in zip(code_1, code_2):
         if a != b:
             diff += a+b
+        else:
+            key += a
     if len(diff) == 2:
-        for a, b in zip(code_1, code_2):
-            if a == b:
-                key += a
         return key
     else:
         return False
 
 def main():
-    """ Determine final frequency based on the input values """
+    """Find the checksum of boxes and find two boxes which differ by 1"""
     with open ("input.txt", 'r') as f:
         read_data = f.readlines()
 
