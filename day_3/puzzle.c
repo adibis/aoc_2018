@@ -4,7 +4,7 @@
 #include<string.h>
 #include<limits.h>
 
-#define REALLOC_SIZE 2048
+#define REALLOC_SIZE 32
 
 typedef struct {
     int coord_x;
@@ -33,7 +33,7 @@ void setup_max_coord(int *min_x, int *max_x, int *min_y, int *max_y, const fabri
 int main() {
 
     FILE *fp;
-    int realloc_counter = 1;
+    size_t realloc_counter = REALLOC_SIZE;
 
     int total_fabrics = 0;
 
@@ -69,12 +69,9 @@ int main() {
         setup_max_coord(&min_x, &max_x, &min_y, &max_y, fabric);
         fabrics[total_fabrics] = fabric;
         total_fabrics++;
-        if(total_fabrics > realloc_counter*REALLOC_SIZE) {
-            realloc_counter++;
-            // FIXME: For some reason this realloc call fails.
-            // Will debug later - just increased the REALLOC_SIZE for now.
-            printf("Reallocating for %d\n", realloc_counter);
-            fabrics = (fabric_t*)realloc(fabrics, REALLOC_SIZE*realloc_counter*sizeof(fabric_t));
+        if(total_fabrics >= (int)realloc_counter) {
+            realloc_counter += REALLOC_SIZE;
+            fabrics = (fabric_t*)realloc(fabrics, realloc_counter*sizeof(fabric_t));
         }
     }
     fclose(fp);
