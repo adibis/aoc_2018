@@ -44,7 +44,7 @@ int main() {
     int min_y = INT_MAX;
 
     fabric_t fabric;
-    fabric_t *fabrics = (fabric_t*)malloc(REALLOC_SIZE*realloc_counter*sizeof(fabric_t));
+    fabric_t *fabrics = malloc(realloc_counter*sizeof(fabric_t));
 
     int **big_fabric;
 
@@ -71,7 +71,7 @@ int main() {
         total_fabrics++;
         if(total_fabrics >= (int)realloc_counter) {
             realloc_counter += REALLOC_SIZE;
-            fabrics = (fabric_t*)realloc(fabrics, realloc_counter*sizeof(fabric_t));
+            fabrics = realloc(fabrics, realloc_counter*sizeof(fabric_t));
         }
     }
     fclose(fp);
