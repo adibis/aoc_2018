@@ -1,5 +1,5 @@
 """
-AOC 2018, Day 5
+AOC 2018, Day 6
 """
 
 __author__ = "adibis"
@@ -55,7 +55,7 @@ def get_mhtn_dist(min_x, max_x, min_y, max_y, read_data, bounded_area):
 
 
 def main():
-    """Day five of AOC 2018"""
+    """Day six of AOC 2018"""
     with open ("input.txt", 'r') as f:
         read_data = f.readlines()
 
