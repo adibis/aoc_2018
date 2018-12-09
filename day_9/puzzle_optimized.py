@@ -28,10 +28,9 @@ def play_game(players, marbles):
             # Calculate the index to remove if this is the 23rd marble.
             # We rotate the queue by 7 so element to remove is at the end.
             # We pop it.
-            remove_index = (len(starting_board)-7) % len(starting_board)
             #print("Before removal board: ", starting_board)
             # Before removal board:  deque([11, 1, 12, 6, 13, 3, 14, 7, 15, 0, 16, 8, 17, 4, 18, 9, 19, 2, 20, 10, 21, 5, 22])
-            starting_board.rotate(-remove_index)
+            starting_board.rotate(7)
             #print("Removal board: ", starting_board)
             # Removal board:  deque([19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15, 0, 16, 8, 17, 4, 18, 9])
             player_scores[i%total_players] += i
